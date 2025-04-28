@@ -1,107 +1,70 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row, Col, Button, Alert, Form } from 'react-bootstrap';
+import { useForm, ValidationError } from '@formspree/react';
+import { useTranslation } from 'react-i18next';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    setShowAlert(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  const { t } = useTranslation();
+  const [state, handleSubmit] = useForm("mdkgkvlj"); // Replace with your real Formspree form ID
 
   return (
     <section id="contact" className="py-5">
       <Container>
         <Row className="mb-5">
           <Col className="text-center">
-            <h2 className="display-5 fw-bold">Contact Us</h2>
-            <p className="lead">Get in touch with our team</p>
+            <h2 className="display-5 fw-bold">{t('contact_title')}</h2>
+            <p className="lead">{t('contact_subtitle')}</p>
           </Col>
         </Row>
         <Row className="g-4">
           <Col lg={6}>
             <div className="contact-info">
-              <h3 className="h4 mb-4">Contact Information</h3>
+              <h3 className="h4 mb-4">{t('contact_info_title')}</h3>
               <p className="mb-3">
                 <i className="fas fa-map-marker-alt me-2"></i>
-                Okinawa-shi, Okinawa, Japan
+                {t('contact_address')}
               </p>
               <p className="mb-3">
                 <i className="fas fa-envelope me-2"></i>
-                info@ryukyu-glocal-factory.com
+                {t('contact_email')}
               </p>
               <p className="mb-0">
                 <i className="fas fa-phone me-2"></i>
-                +81 (0)98-XXX-XXXX
+                {t('contact_phone')}
               </p>
             </div>
           </Col>
           <Col lg={6}>
-            <Form onSubmit={handleSubmit}>
-              {showAlert && (
-                <Alert variant="success" onClose={() => setShowAlert(false)} dismissible>
-                  Thank you for your message! We'll get back to you soon.
-                </Alert>
-              )}
-              <Form.Group className="mb-3">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Subject</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Message</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows={4}
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Send Message
-              </Button>
-            </Form>
+            {state.succeeded ? (
+              <Alert variant="success">{t('contact_form_success')}</Alert>
+            ) : (
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label htmlFor="email">{t('contact_form_email')}</Form.Label>
+                  <Form.Control
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label htmlFor="message">{t('contact_form_message')}</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    id="message"
+                    name="message"
+                    rows={4}
+                    required
+                  />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
+                </Form.Group>
+                <Button variant="primary" type="submit" disabled={state.submitting}>
+                  {t('contact_form_send')}
+                </Button>
+              </Form>
+            )}
           </Col>
         </Row>
       </Container>

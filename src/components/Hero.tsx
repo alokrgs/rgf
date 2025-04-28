@@ -5,11 +5,7 @@ import '../i18n';
 import '../App.css';
 
 const Hero: React.FC = () => {
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+  const { t } = useTranslation();
 
   return (
     <section id="home" className="hero-section py-5 position-relative overflow-hidden">
@@ -32,28 +28,10 @@ const Hero: React.FC = () => {
           opacity: 0.6,
         }}
       />
-      {/* Language Switcher */}
-      <div style={{ position: 'absolute', top: 20, right: 20, zIndex: 2 }}>
-        <Button
-          variant={i18n.language === 'ja' ? 'primary' : 'outline-primary'}
-          size="sm"
-          onClick={() => changeLanguage('ja')}
-          className="me-2"
-        >
-          日本語
-        </Button>
-        <Button
-          variant={i18n.language === 'en' ? 'primary' : 'outline-primary'}
-          size="sm"
-          onClick={() => changeLanguage('en')}
-        >
-          English
-        </Button>
-      </div>
       <div className="hero-content position-relative" style={{ zIndex: 1 }}>
         <Container>
           <Row className="align-items-center min-vh-100">
-            <Col lg={6} className="text-center text-lg-start">
+            <Col lg={12} className="text-center text-lg-start">
               <h1 className="display-4 fw-bold mb-4">
                 {t('hero_title')}
               </h1>
@@ -63,12 +41,6 @@ const Hero: React.FC = () => {
               <Button variant="primary" size="lg" href="#contact">
                 {t('contact_us')}
               </Button>
-            </Col>
-            <Col lg={6} className="d-none d-lg-block">
-              {/* Placeholder for hero image */}
-              <div className="hero-image-placeholder">
-                {/* Add your hero image here */}
-              </div>
             </Col>
           </Row>
         </Container>

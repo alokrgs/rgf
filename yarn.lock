@@ -1239,6 +1239,22 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
+"@formspree/core@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@formspree/core/-/core-4.0.0.tgz#3425bdcbcf8669c1540f66adc9158adcb075096d"
+  integrity sha512-geNlUut5nME1Ztej5Pzx1BrlQ1fFIcJYIqmF+Vm0jaUbpZxjXvt7SDOGeQVkuxn80QJiIHlwBGGjSBFjPX/KDw==
+  dependencies:
+    "@stripe/stripe-js" "^5.7.0"
+
+"@formspree/react@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@formspree/react/-/react-3.0.0.tgz#9d8cc5cb5c7ef18f0606dbc9415d8c3d21425467"
+  integrity sha512-8PufBZ4l13VmCp9xTGQXwyF6mZtYSecqgTlFuMo5Fbe4Q6zUk7PMU2uKOwIaytZyTyJgFVCvdbpQElPPBKYNLw==
+  dependencies:
+    "@formspree/core" "^4.0.0"
+    "@stripe/react-stripe-js" "^3.1.1"
+    "@stripe/stripe-js" "^5.7.0"
+
 "@fortawesome/fontawesome-common-types@6.7.2":
   version "6.7.2"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.7.2.tgz#7123d74b0c1e726794aed1184795dbce12186470"
@@ -1719,6 +1735,18 @@
   integrity sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==
   dependencies:
     "@sinonjs/commons" "^1.7.0"
+
+"@stripe/react-stripe-js@^3.1.1":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@stripe/react-stripe-js/-/react-stripe-js-3.6.0.tgz#af6b66c006eef97ed885815ae976fb74f0aa1bf4"
+  integrity sha512-zEnaUmTOsu7zhl3RWbZ0l1dRiad+QIbcAYzQfF+yYelURJowhAwesRHKWH+qGAIBEpkO6/VCLFHhVLH9DtPlnw==
+  dependencies:
+    prop-types "^15.7.2"
+
+"@stripe/stripe-js@^5.7.0":
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-5.10.0.tgz#4d1fcf8c59530865fcd59ce910798cc9c973a870"
+  integrity sha512-PTigkxMdMUP6B5ISS7jMqJAKhgrhZwjprDqR1eATtFfh0OpKVNp110xiH+goeVdrJ29/4LeZJR4FaHHWstsu0A==
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"
@@ -7801,7 +7829,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==

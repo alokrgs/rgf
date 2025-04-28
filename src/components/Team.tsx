@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const Team: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <section id="team" className="py-5 bg-light">
       <Container>
         <Row className="mb-5">
           <Col className="text-center">
-            <h2 className="display-5 fw-bold">Our Team</h2>
-            <p className="lead">Experts in Mozuku Processing and Research</p>
+            <h2 className="display-5 fw-bold">{t('team_title')}</h2>
+            <p className="lead">{t('team_subtitle')}</p>
           </Col>
         </Row>
         <Row className="g-4">
@@ -18,12 +20,8 @@ const Team: React.FC = () => {
                 <div className="mb-4">
                   <i className="fas fa-user-graduate fa-3x text-primary"></i>
                 </div>
-                <h3 className="h4 mb-3">Academic Excellence</h3>
-                <p className="mb-0">
-                  Our team includes associate professors from Ryukyu University,
-                  bringing cutting-edge research and academic expertise to our
-                  operations.
-                </p>
+                <h3 className="h4 mb-3">{t('team_academic_title')}</h3>
+                <p className="mb-0">{t('team_academic_desc')}</p>
               </Card.Body>
             </Card>
           </Col>
@@ -33,11 +31,8 @@ const Team: React.FC = () => {
                 <div className="mb-4">
                   <i className="fas fa-industry fa-3x text-primary"></i>
                 </div>
-                <h3 className="h4 mb-3">Industry Experience</h3>
-                <p className="mb-0">
-                  Seasoned professionals with decades of experience in mozuku
-                  processing and product development.
-                </p>
+                <h3 className="h4 mb-3">{t('team_industry_title')}</h3>
+                <p className="mb-0">{t('team_industry_desc')}</p>
               </Card.Body>
             </Card>
           </Col>
@@ -47,12 +42,8 @@ const Team: React.FC = () => {
                 <div className="mb-4">
                   <i className="fas fa-lightbulb fa-3x text-primary"></i>
                 </div>
-                <h3 className="h4 mb-3">Innovation</h3>
-                <p className="mb-0">
-                  Our patented freeze-drying technology is the result of
-                  collaborative research and development between academia and
-                  industry.
-                </p>
+                <h3 className="h4 mb-3">{t('team_innovation_title')}</h3>
+                <p className="mb-0">{t('team_innovation_desc')}</p>
               </Card.Body>
             </Card>
           </Col>
