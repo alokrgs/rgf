@@ -18,7 +18,11 @@ const Team: React.FC = () => {
             <Card className="h-100 border-0 shadow-sm">
               <Card.Body className="text-center">
                 <div className="mb-4">
-                  <i className="fas fa-user-graduate fa-3x text-primary"></i>
+                  <img
+                    src="/images/academic.jpg"
+                    alt="Academic Team Member"
+                    className="team-avatar"
+                  />
                 </div>
                 <h3 className="h4 mb-3">{t('team_academic_title')}</h3>
                 <p className="mb-0">{t('team_academic_desc')}</p>
@@ -29,7 +33,11 @@ const Team: React.FC = () => {
             <Card className="h-100 border-0 shadow-sm">
               <Card.Body className="text-center">
                 <div className="mb-4">
-                  <i className="fas fa-industry fa-3x text-primary"></i>
+                  <img
+                    src="/images/industry.jpg"
+                    alt="Industry Team Member"
+                    className="team-avatar"
+                  />
                 </div>
                 <h3 className="h4 mb-3">{t('team_industry_title')}</h3>
                 <p className="mb-0">{t('team_industry_desc')}</p>
@@ -40,7 +48,11 @@ const Team: React.FC = () => {
             <Card className="h-100 border-0 shadow-sm">
               <Card.Body className="text-center">
                 <div className="mb-4">
-                  <i className="fas fa-lightbulb fa-3x text-primary"></i>
+                  <img
+                    src="/images/innovation.jpg"
+                    alt="Innovation Team Member"
+                    className="team-avatar"
+                  />
                 </div>
                 <h3 className="h4 mb-3">{t('team_innovation_title')}</h3>
                 <p className="mb-0">{t('team_innovation_desc')}</p>

@@ -1,10 +1,32 @@
 import React from 'react';
 import { Navbar as BootstrapNavbar, Nav, Container, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import '../i18n';
+
+const scrollToSection = (id: string) => {
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 100);
+};
 
 const Navbar: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleSectionClick = (section: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => scrollToSection(section), 200);
+    } else {
+      scrollToSection(section);
+    }
+  };
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
@@ -13,14 +35,24 @@ const Navbar: React.FC = () => {
   return (
     <BootstrapNavbar bg="light" expand="lg" fixed="top" className="shadow-sm">
       <Container>
-        <BootstrapNavbar.Brand href="#home">{t('navbar_brand')}</BootstrapNavbar.Brand>
+        <BootstrapNavbar.Brand as={NavLink} to="/">
+          {t('navbar_brand')}
+        </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
-            <Nav.Link href="#about">{t('navbar_about')}</Nav.Link>
-            <Nav.Link href="#products">{t('navbar_products')}</Nav.Link>
-            <Nav.Link href="#team">{t('navbar_team')}</Nav.Link>
-            <Nav.Link href="#contact">{t('navbar_contact')}</Nav.Link>
+            <NavLink to="/about" className="nav-link">
+              {t('navbar_about')}
+            </NavLink>
+            <NavLink to="/team" className="nav-link">
+              {t('navbar_team_page')}
+            </NavLink>
+            <NavLink to="/products" className="nav-link">
+              {t('navbar_products')}
+            </NavLink>
+            <NavLink to="/contact" className="nav-link">
+              {t('navbar_contact')}
+            </NavLink>
             <div className="d-flex align-items-center ms-3">
               <Button
                 variant={i18n.language === 'ja' ? 'primary' : 'outline-primary'}

@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
               <p className="lead mb-4">
                 {t('hero_subtitle')}
               </p>
-              <Button variant="primary" size="lg" href="#contact">
+              <Button variant="primary" size="lg" href="/contact">
                 {t('contact_us')}
               </Button>
             </Col>
